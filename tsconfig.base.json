@@ -16,8 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "api": ["libs/core/http-client/src/index.ts"],
-      "data-access": ["libs/profile/data-access/src/index.ts"],
       "api-types": ["libs/core/api-types/src/index.ts"],
+      "data-acces": ["libs/core/data-access/src/index.ts"],
+      "data-access": ["libs/profile/data-access/src/index.ts"],
       "profile-search": ["libs/profile/profile-search/src/index.ts"]
     }
   },

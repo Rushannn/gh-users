@@ -1,4 +1,4 @@
-import { Profile } from '../../../../core/api-types/src/index';
+import { Profile } from '../../../../../core/api-types/src/index';
 
 export type ProfileState = {
   data: Profile

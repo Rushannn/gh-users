@@ -1,5 +1,5 @@
 import { signalStore, withMethods, withState } from '@ngrx/signals';
-import { ProfileState, profileInitialState } from './profile.model';
+import { ProfileState, profileInitialState } from './models/profile.model';
 
 
 export const ProfileStore = signalStore(
