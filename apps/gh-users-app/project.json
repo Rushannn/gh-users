@@ -8,19 +8,26 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/gh-users-app",
         "index": "apps/gh-users-app/src/index.html",
         "browser": "apps/gh-users-app/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/gh-users-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/gh-users-app/src/favicon.ico",
           "apps/gh-users-app/src/assets"
         ],
-        "styles": ["apps/gh-users-app/src/styles.scss"],
+        "styles": [
+          "apps/gh-users-app/src/styles.scss",
+          "@angular/material/prebuilt-themes/deeppurple-amber.css"
+        ],
         "scripts": []
       },
       "configurations": {
