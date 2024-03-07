@@ -8,12 +8,16 @@ export class ProfilesService {
   private readonly apiService = inject(ApiService);
 
   query(params: SearchQueryParams): Observable<Profiles> {
-    const { value, page, per_page, sort, order } = params;
-    let url = `/search/users?q=${value}`;
+    const { name, page, per_page, languages, order } = params;
+    let url = `/search/users?q=${name}`;
 
     if (page !== undefined) url += `&page=${page}`;
     if (per_page !== undefined) url += `&per_page=${per_page}`;
-    if (sort !== undefined) url += `&sort=${sort}`;
+    if (languages !== undefined && languages.length > 0) {
+      languages.forEach((language) => {
+        url += `+language:${language}`;
+      });
+    }
     if (order !== undefined) url += `&order=${order}`;
 
     return this.apiService.get<Profiles>(url);

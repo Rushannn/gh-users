@@ -1,0 +1,10 @@
+<div class="github-profile-card" *ngIf="profile">
+  <img src="{{ profile.avatar_url }}" alt="{{ profile.login }}'s avatar" class="github-profile-card__avatar">
+  <div class="github-profile-card__info">
+    <h2 class="github-profile-card__name"><a href="{{ profile.html_url }}" target="_blank">{{ profile.login }}</a></h2>
+    <p class="github-profile-card__followers"><a href="{{ profile.followers_url }}" target="_blank">Followers URL</a></p>
+    <p class="github-profile-card__repos"><a href="{{ profile.repos_url }}" target="_blank">Repositories URL</a></p>
+    <!-- Дополните шаблон другой необходимой информацией -->
+  </div>
+</div>
+

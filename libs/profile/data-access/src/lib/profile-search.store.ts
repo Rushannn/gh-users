@@ -39,7 +39,10 @@ export const ProfileSearchStore = signalStore(
               }))
           )
         )
-      )
+      ),
+      setSearchParams: (searchParams: SearchQueryParams) => {
+        patchState(store, { searchParams });
+      },
     })
   ),
   withCallState({ collection: 'getProfiles' }),

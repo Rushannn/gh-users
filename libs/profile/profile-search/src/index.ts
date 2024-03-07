@@ -1,1 +1,1 @@
-export * from './lib/profile-search/profile-search.component';
+export * from './lib/profile-search.component';

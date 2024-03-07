@@ -1,12 +1,19 @@
 import { Profile } from "api-types"
 
 export interface SearchQueryParams {
-  value: string;
+  name: string;
   page: number;
   per_page: number;
-  sort: 'interactions' | 'followers' | 'repositories' | 'joined';
+  languages?: (typeof LanguagesMap[keyof typeof LanguagesMap])[];
   order: 'asc' | 'desc';
 }
+
+export const LanguagesMap: { [key: string]: string } = {
+  javascipt: 'javascript',
+  python: 'python',
+  ruby: 'ruby',
+  typescript: 'typescript',
+};
 
 export interface Profiles {
   total_count: number;
@@ -26,10 +33,10 @@ export const profileSearchInitialstate: ProfileSearchState = {
     items: []
   },
   searchParams: {
-    value: '',
+    name: '',
     page: 1,
     per_page: 10,
-    sort: 'interactions',
+    languages: [],
     order: 'asc'
   }
 }

@@ -1,0 +1,29 @@
+.github-profile-card {
+  display: flex;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+  &__name, &__followers, &__repos {
+    margin: 5px 0;
+    a {
+      text-decoration: none;
+      color: #0366d6;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<form [formGroup]="searchForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Write here...</mat-label>
+    <input
+      matInput
+      placeholder="Write here..."
+      id="searchControl"
+      type="text"
+      formControlName="name"
+    />
+  </mat-form-field>
+
+  <!-- <mat-chip-listbox aria-label="Fish selection" (change)="onChange($event)">
+  <mat-chip-option *ngFor="let option of sortOptions">
+    {{ option }}
+  </mat-chip-option>
+</mat-chip-listbox> -->
+
+  <mat-form-field>
+    <mat-label>Languages</mat-label>
+    <mat-select formControlName="languages" multiple>
+      <mat-select-trigger>
+        {{ searchForm.controls['languages'].value?.[0] || '' }}
+        @if ((searchForm.controls['languages'].value?.length || 0) > 1) {
+        <span class="example-additional-selection">
+          (+{{ (searchForm.controls['languages'].value?.length || 0) - 1 }}
+          {{ searchForm.controls['languages'].value?.length === 2 ? 'other' : 'others' }})
+        </span>
+        }
+      </mat-select-trigger>
+      @for (language of languagesMap; track language) {
+      <mat-option [value]="language">{{ language }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+</form>
