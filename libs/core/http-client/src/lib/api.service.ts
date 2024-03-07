@@ -10,7 +10,6 @@ export class ApiService {
   private readonly api_url = inject(API_URL);
 
   get<T>(url: string, params: HttpParams = new HttpParams()): Observable<T> {
-    console.log('this.api_url',this.api_url)
     return this.http.get<T>(`${this.api_url}${url}`, {
       headers: this.headers,
       params,

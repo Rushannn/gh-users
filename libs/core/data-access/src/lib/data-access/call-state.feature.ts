@@ -15,10 +15,10 @@ export type CallStateSlice = {
 export type NamedCallStateSignals<Prop extends string> = {
   [K in Prop as `${K}Loading`]: Signal<boolean>;
 } & {
-  [K in Prop as `${K}Loaded`]: Signal<boolean>;
-} & {
-  [K in Prop as `${K}Error`]: Signal<string | null>;
-};
+    [K in Prop as `${K}Loaded`]: Signal<boolean>;
+  } & {
+    [K in Prop as `${K}Error`]: Signal<string | null>;
+  };
 
 export type CallStateSignals = {
   loading: Signal<boolean>;
@@ -78,7 +78,6 @@ export function setLoading<Prop extends string>(prop?: Prop): NamedCallStateSlic
   if (prop) {
     return { [`${prop}CallState`]: 'loading' } as NamedCallStateSlice<Prop>;
   }
-
   return { callState: 'loading' };
 }
 

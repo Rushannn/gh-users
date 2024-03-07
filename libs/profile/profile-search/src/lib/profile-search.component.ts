@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit, effect, inject, untracked } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProfileSearchStore, SearchQueryParams } from 'data-access';
 import { ProfileSearchPanelComponent } from './profile-search-panel/profile-search-panel.component';
 import { ProfileSearchResultItemComponent } from './profile-search-result-item/profile-search-result-item.component';
+import { InfiniteScrollModule } from "ngx-infinite-scroll";
 
 @Component({
   selector: 'lib-profile-search',
@@ -10,7 +11,8 @@ import { ProfileSearchResultItemComponent } from './profile-search-result-item/p
   imports: [
     CommonModule,
     ProfileSearchPanelComponent,
-    ProfileSearchResultItemComponent
+    ProfileSearchResultItemComponent,
+    InfiniteScrollModule
   ],
   templateUrl: './profile-search.component.html',
   styleUrl: './profile-search.component.scss',
@@ -21,13 +23,14 @@ export class ProfileSearchComponent {
 
   $profiles = this.profileSearchStore.profiles.items;
   $isLoading = this.profileSearchStore.getProfilesLoading;
+  $totalPages = this.profileSearchStore.totalPages;
+  $searchParams = this.profileSearchStore.searchParams;
 
   params: SearchQueryParams = {
     name: 'ff',
     page: 1,
     per_page: 10,
     languages: [],
-    order: 'asc'
   }
 
   // readonly loadProfilesOnLogin = effect(() => {
@@ -39,8 +42,16 @@ export class ProfileSearchComponent {
   }
 
   onChangeSearchParams(event: any) {
-    console.log(event)
-    this.profileSearchStore.getProfiles(event);
+    const newSearchParams = { ...this.$searchParams(), name: event.name, languages: event.languages }
+    this.profileSearchStore.getProfiles(newSearchParams);
+  }
+
+  onScroll() {
+    // const newPage = this.$searchParams().page + 1;
+    // if(newPage)
+    console.log('onScroll() ')
+    const newSearchParams = { ...this.$searchParams(), page: this.$searchParams().page + 1 }
+    this.profileSearchStore.addProfiles(newSearchParams);
   }
 
 }

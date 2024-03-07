@@ -10,13 +10,9 @@ import { Profile } from 'api-types';
   styleUrl: './profile-search-result-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProfileSearchResultItemComponent implements OnInit {
+export class ProfileSearchResultItemComponent {
 
   @Input() profile!: Profile;
 
-
-  ngOnInit(): void {
-    console.log('profile', this.profile)
-  }
 
 }

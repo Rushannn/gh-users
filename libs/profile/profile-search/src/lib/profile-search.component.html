@@ -1,17 +1,25 @@
-
-<lib-profile-search-panel (changeSearchParams)="onChangeSearchParams($event)"></lib-profile-search-panel>
-
-
-
-@if (!$isLoading()) {
-  @for (profile of $profiles(); track profile) {
-    <lib-profile-search-result-item [profile]="profile"></lib-profile-search-result-item>
+<div
+  infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()"
+>
+  <lib-profile-search-panel
+    (changeSearchParams)="onChangeSearchParams($event)"
+  ></lib-profile-search-panel>
+  {{ $totalPages().length }}
+  @if($totalPages().length ){
+    Users found: {{ $totalPages().length }}
   }
-  <!-- @empty {
-    <div>There are no users with the selected params.</div>
-  } -->
 
+  @if (!$isLoading()) {
+    @for (profile of $profiles();let idx = $index; track profile) {
+  <lib-profile-search-result-item
+    [profile]="profile"
+  ></lib-profile-search-result-item> {{idx}}
+  }
 
-} @else {
-  <div>Loading articles...</div>
-}
+  } @else {
+  <div>Loading users...</div>
+  }
+</div>

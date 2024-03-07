@@ -5,7 +5,6 @@ export interface SearchQueryParams {
   page: number;
   per_page: number;
   languages?: (typeof LanguagesMap[keyof typeof LanguagesMap])[];
-  order: 'asc' | 'desc';
 }
 
 export const LanguagesMap: { [key: string]: string } = {
@@ -29,14 +28,12 @@ export interface ProfileSearchState {
 export const profileSearchInitialstate: ProfileSearchState = {
   profiles: {
     total_count: 0,
-    // incomplete_results: false,
     items: []
   },
   searchParams: {
     name: '',
     page: 1,
-    per_page: 10,
+    per_page: 20,
     languages: [],
-    order: 'asc'
   }
 }
